@@ -3,20 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planner.ClientApp", "src\Planner\ClientApp\Planner.ClientApp\Planner.ClientApp.csproj", "{D57A950F-8251-4E2B-B8F4-86BFFC12A857}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planner.ClientApp", "src\Planner\ClientApp\Planner.ClientApp\Planner.ClientApp.csproj", "{02F3B467-481A-4A1A-B92B-731CFDEA1316}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Planner", "Planner", "{D3174F6A-3487-493D-B837-7B37AB0563A1}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Planner", "Planner", "{54D3B090-0E62-4F9E-8445-CDC4267272D2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{767A6283-471A-4C7B-B5F8-7F704AFE6760}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientApp", "ClientApp", "{2E21A33C-58FB-49D8-95A6-30D697B9AAB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8EC462FD-D22E-90A8-E5CE-7E832BA40C5D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
-		DEVELOPERS.md = DEVELOPERS.md
-		README.md = README.md
 	EndProjectSection
 EndProject
 Global
@@ -25,20 +23,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D57A950F-8251-4E2B-B8F4-86BFFC12A857}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D57A950F-8251-4E2B-B8F4-86BFFC12A857}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D57A950F-8251-4E2B-B8F4-86BFFC12A857}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D57A950F-8251-4E2B-B8F4-86BFFC12A857}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02F3B467-481A-4A1A-B92B-731CFDEA1316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02F3B467-481A-4A1A-B92B-731CFDEA1316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02F3B467-481A-4A1A-B92B-731CFDEA1316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02F3B467-481A-4A1A-B92B-731CFDEA1316}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D57A950F-8251-4E2B-B8F4-86BFFC12A857} = {767A6283-471A-4C7B-B5F8-7F704AFE6760}
-		{D3174F6A-3487-493D-B837-7B37AB0563A1} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
-		{767A6283-471A-4C7B-B5F8-7F704AFE6760} = {D3174F6A-3487-493D-B837-7B37AB0563A1}
+		{02F3B467-481A-4A1A-B92B-731CFDEA1316} = {2E21A33C-58FB-49D8-95A6-30D697B9AAB0}
+		{54D3B090-0E62-4F9E-8445-CDC4267272D2} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{2E21A33C-58FB-49D8-95A6-30D697B9AAB0} = {54D3B090-0E62-4F9E-8445-CDC4267272D2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E939C431-6066-495D-83BD-6042A5450F05}
+		SolutionGuid = {F847EA2E-9BA4-4902-BC54-968707B4FE22}
 	EndGlobalSection
 EndGlobal

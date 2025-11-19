@@ -1,0 +1,52 @@
+﻿/* 1. Main container uses column direction */
+.flex-container {
+    display: flex;
+    flex-direction: column; /* Stacks children (.top-row and .main-content-row) vertically */
+    min-height: 90vh; /* Ensures it takes up most of the viewport height */
+    /* Styles for rounded outer edges and padding from window edge */
+    margin: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--mud-palette-table-lines);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* 2. Style the new top row */
+.top-row {
+    display: flex; /* Makes the children of top-row lay out horizontally */
+    width: 100%;
+    padding: 10px 15px;
+    /* Adds a bottom border to separate the top row from the main content */
+    border-bottom: 1px solid var(--mud-palette-table-lines);
+}
+
+.top-column-left {
+    flex: 1; /* Makes the left part of the header grow */
+}
+
+.top-column-right {
+    /* Content-wrapped, maybe aligned right */
+    text-align: right;
+}
+
+/* 3. Style the main content row container */
+.main-content-row {
+    display: flex; /* Enables the horizontal column layout within this row */
+    flex: 1; /* CRUCIAL: Makes this entire row container grow vertically to fill remaining space */
+    gap: 0; /* Remove gap for clean borders */
+}
+
+/* 4. Existing column styles */
+.column {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.left-column {
+    flex: 0 0 auto; /* Content-wrapped width */
+    border-right: 2px solid var(--mud-palette-table-lines); /* Interior border */
+}
+
+.right-column {
+    flex: 1 1 0%; /* Fills remaining horizontal space */
+}

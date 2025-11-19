@@ -1,3 +1,28 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits MainLayoutBase
 
-@Body
+<MudThemeProvider @ref="ThemeProvider" @bind-IsDarkMode="IsDarkMode" Theme="Themes.Theme.Yeti" />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<div class="flex-container">
+
+    <div class="top-row">
+        <div class="top-column-left">Logo/Navigation</div>
+        <div class="top-column-right">
+            <MudToggleIconButton @bind-Toggled="IsDarkMode"
+                                 Icon="@Icons.Material.Filled.DarkMode"
+                                 ToggledIcon="@Icons.Material.Filled.LightMode"
+                                 title="@(IsDarkMode ? "Switch to Light mode" : "Switch to Dark mode")" />
+        </div>
+    </div>
+
+    <div class="main-content-row">
+        <div class="column left-column">
+            <MyNavMenu />
+        </div>
+        <div class="column right-column">
+            @Body
+        </div>
+    </div>
+</div>

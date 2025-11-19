@@ -20,15 +20,6 @@
     border-bottom: 1px solid var(--mud-palette-table-lines);
 }
 
-.top-column-left {
-    flex: 1; /* Makes the left part of the header grow */
-}
-
-.top-column-right {
-    /* Content-wrapped, maybe aligned right */
-    text-align: right;
-}
-
 /* 3. Style the main content row container */
 .main-content-row {
     display: flex; /* Enables the horizontal column layout within this row */

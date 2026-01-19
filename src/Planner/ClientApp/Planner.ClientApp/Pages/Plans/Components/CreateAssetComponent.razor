@@ -1,0 +1,29 @@
+﻿@using Planner.Core
+
+<MudDialog DefaultFocus="DefaultFocus.FirstChild">
+    <DialogContent>
+
+        <MudTextField T="string" Label="Name" Required="true" @bind-Value="AssetName"
+            RequiredError="A name is required!" />
+
+        <MudSelect T="AssetTaxStatus" @bind-Value="TaxStatus">
+            <MudSelectItem T="AssetTaxStatus" Value=AssetTaxStatus.Taxable>Taxable</MudSelectItem>
+            <MudSelectItem T="AssetTaxStatus" Value=AssetTaxStatus.TaxFree>Tax Free</MudSelectItem>
+        </MudSelect>
+
+        <MudTextField T="float" Label="Interest Rate %" Required="true" @bind-Value="InterestRate"
+            RequiredError="A percentage is required." />
+
+        <MudTextField T="decimal" Label="Amount" Required="true" @bind-Value="Amount"
+            RequiredError="An amount is required!" />
+
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex align-center justify-space-between">
+            <MudButton Variant="Variant.Filled" Disabled="false" Class="ml-auto" OnClick="this.CancelAsset">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="false" Class="ml-auto" OnClick="this.AddAsset">Add
+            </MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>    

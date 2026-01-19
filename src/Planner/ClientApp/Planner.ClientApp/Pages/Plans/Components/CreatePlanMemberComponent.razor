@@ -1,0 +1,18 @@
+﻿<MudDialog DefaultFocus="DefaultFocus.FirstChild">
+    <DialogContent>
+        <MudForm>
+            <MudTextField T="string" Label="Name" Required="true" @bind-Value="_memberName"
+                RequiredError="A name is required!" />
+            <MudDatePicker Label="Birthdate" HelperText="yyyy-MM-dd" Editable="true" @bind-Date="_memberBirthdate"
+                Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="ISO Date"
+                Variant="Variant.Outlined" />
+        </MudForm>
+    </DialogContent>
+    <DialogActions>
+        <div class="d-flex align-center justify-space-between">
+            <MudButton Variant="Variant.Filled" Disabled="false" Class="ml-auto" OnClick="this.CancelMember">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="false" Class="ml-auto" OnClick="this.AddMember">Add
+            </MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>

@@ -122,7 +122,7 @@ public partial class Theme {
 			SuccessLighten = "#0d2215",
 			PrimaryLighten = "#02b3edff",
 			PrimaryDarken = "#015c7aff",
-			Primary = "#ffffffff",
+			Primary = "#001c25",
 			AppbarText = "#ccccccff",
 			AppbarBackground = "#001c25",
 			Black = "#000",

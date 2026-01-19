@@ -1,0 +1,82 @@
+﻿@page "/plans/create"
+@using MudBlazor.Extensions
+@using Planner.Core
+@using Planner.ClientApp.Pages.Plans.Components
+
+<PageTitle>Plans</PageTitle>
+
+<h3>Create Plan</h3>
+<MudForm>
+    <MudTextField T="string" Required="true" @bind-Value="_planName"
+        RequiredError="Please supply a name for this plan." />
+</MudForm>
+
+<MudExpansionPanels>
+    <MudExpansionPanel Text="Members" Expanded="true">
+        <MudStack Row="true">
+        @if (Members.Count == 0) {
+            <MudText Color="Color.Error">Please add at least one member.</MudText>
+        }
+        @foreach (NewPlanMember member in Members)
+        {
+            <MudCard Outlined="true">
+                <MudCardContent>
+                    <MudForm>
+                        <MudTextField T="string" Label="Name" Required="true" @bind-Value="member.Name"
+                            RequiredError="A name is required!" />
+                        <MudDatePicker Label="Birthdate" Editable="true" @bind-Date="member.Birthdate"
+                            Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="ISO Date"
+                            Required="true" RequiredError="A birthdate is required!"
+                            Variant="Variant.Outlined" />
+                        <MudTextField T="int" Label="Life Expectancy" Required="false" @bind-Value="member.LifeExpectancyInYears" />
+                    </MudForm>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error"
+                        OnClick="() => RemoveMember(member.Id)">Remove
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        }
+        </MudStack>
+        <MudDivider DividerType="DividerType.Middle" Class="my-6"/>
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="this.ShowCreatePlanMemberAsync" />
+
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Assumptions">
+        <PlanAssumptionsComponent />
+    </MudExpansionPanel>
+    <MudExpansionPanel Text="Assets">
+        <MudStack Row="true">
+        @foreach (NewPlanAsset asset in PlanAssets)
+        {
+            <MudCard Outlined="true">
+                <MudCardContent>
+                    <MudForm>
+                        <MudTextField T="string" Label="Name" Required="true" @bind-Value="asset.Name"
+                            RequiredError="A name is required!" />
+                        <MudSelect T="AssetTaxStatus?" @bind-Value="asset.TaxStatus">
+                            <MudSelectItem T="AssetTaxStatus?" Value=AssetTaxStatus.Taxable>Taxable</MudSelectItem>
+                            <MudSelectItem T="AssetTaxStatus?" Value=AssetTaxStatus.TaxFree>Tax Free</MudSelectItem>
+                        </MudSelect>
+                        <MudTextField T="float?" Label="Interest Rate %" Required="false" @bind-Value="asset.InterestRate" />
+                        <MudTextField T="decimal?" Label="Amount" Required="false" @bind-Value="asset.Amount" />
+                    </MudForm>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error"
+                        OnClick="() => this.RemoveAsset(asset.Id)">Remove
+                    </MudButton>
+                </MudCardActions>
+            </MudCard>
+        }
+        </MudStack>
+        <MudDivider DividerType="DividerType.Middle" Class="my-6"/>
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="this.ShowCreatePlanAssetAsync" />
+
+    </MudExpansionPanel>
+</MudExpansionPanels>
+
+<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Check" Label="Create" Style="position:fixed; right:40px;" />
+
+

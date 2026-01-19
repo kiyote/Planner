@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
+using Planner.Core.LifeExpectancies;
 
 namespace Planner.ClientApp;
 
@@ -10,8 +11,10 @@ public class Program {
 		builder.RootComponents.Add<App>( "#app" );
 		builder.RootComponents.Add<HeadOutlet>( "head::after" );
 
-		_ = builder.Services.AddScoped( sp => new HttpClient { BaseAddress = new Uri( builder.HostEnvironment.BaseAddress ) } );
-		_ = builder.Services.AddMudServices();
+		_ = builder.Services
+			.AddScoped( sp => new HttpClient { BaseAddress = new Uri( builder.HostEnvironment.BaseAddress ) } )
+			.AddMudServices()
+			.AddHardcodedLifeExpectancyProvider();
 
 		await builder.Build().RunAsync();
 	}

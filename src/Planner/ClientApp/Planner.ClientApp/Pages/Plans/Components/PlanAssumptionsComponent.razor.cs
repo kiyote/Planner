@@ -1,13 +1,18 @@
-
-using MudBlazor;
 using Microsoft.AspNetCore.Components;
-using Planner.Core.LifeExpectancies;
 
 namespace Planner.ClientApp.Pages.Plans.Components;
 
 public partial class PlanAssumptionsComponent {
 
-	public float InflationRate {get; set;}
+	[Parameter]
+	public decimal InflationPercent { get; set; }
 
-	public float InterestRate {get; set;}
+	[Parameter]
+	public EventCallback<decimal> InflationPercentChanged { get; set; }
+
+	[Parameter]
+	public decimal InterestPercent { get; set; }
+
+	[Parameter]
+	public EventCallback<decimal> InterestPercentChanged { get; set; }
 }

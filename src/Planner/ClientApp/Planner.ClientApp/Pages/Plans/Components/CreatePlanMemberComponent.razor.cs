@@ -2,6 +2,7 @@
 using MudBlazor;
 using Microsoft.AspNetCore.Components;
 using Planner.Core.LifeExpectancies;
+using Planner.ClientApp.Pages.Plans.Models;
 
 namespace Planner.ClientApp.Pages.Plans.Components;
 

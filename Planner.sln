@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36603.0
+# Visual Studio Version 18
+VisualStudioVersion = 18.2.11415.280 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Planner.ClientApp", "src\Planner\ClientApp\Planner.ClientApp\Planner.ClientApp.csproj", "{02F3B467-481A-4A1A-B92B-731CFDEA1316}"
 EndProject

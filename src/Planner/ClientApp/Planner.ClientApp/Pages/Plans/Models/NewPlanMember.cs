@@ -1,7 +1,7 @@
-namespace Planner.ClientApp.Pages.Plans;
+namespace Planner.ClientApp.Pages.Plans.Models;
 
 public class NewPlanMember {
-	public Guid Id { get; } = Guid.NewGuid();
+	public Guid Id { get; } = Guid.CreateVersion7();
 
 	public string? Name { get; set; }
 

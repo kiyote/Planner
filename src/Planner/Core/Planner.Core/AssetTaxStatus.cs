@@ -1,7 +1,9 @@
+using System.Text.Json.Serialization;
+
 namespace Planner.Core;
 
-public enum AssetTaxStatus
-{
+[JsonConverter( typeof( JsonStringEnumConverter ) )]
+public enum AssetTaxStatus {
 	Unknown = -1,
 	Taxable = 0,
 	TaxFree = 1

@@ -1,0 +1,43 @@
+﻿@using Planner.Core
+
+<MudDialog DefaultFocus="DefaultFocus.FirstChild">
+    <DialogContent>
+
+        <MudTextField T="string" Label="Name" Required="true" @bind-Value="IncomeName"
+                      RequiredError="A name is required!" />
+
+        <MudSelect T="IncomeFrequency" @bind-Value="Frequency" Label="Frequency">
+            <MudSelectItem T="IncomeFrequency" Value=IncomeFrequency.Monthly>Monthly</MudSelectItem>
+            <MudSelectItem T="IncomeFrequency" Value=IncomeFrequency.OneTime>One Time</MudSelectItem>
+            <MudSelectItem T="IncomeFrequency" Value=IncomeFrequency.Annual>Annual</MudSelectItem>
+        </MudSelect>
+
+        <MudTextField T="decimal" Label="Amount" Required="true" @bind-Value="Amount"
+                      RequiredError="An amount is required!" />
+
+        <MudSelect T="Guid ?" @bind-Value="TargetAssetId" Label="Target Asset" Required="true">
+            @foreach (var asset in PlanAssets)
+            {
+                <MudSelectItem T="Guid ?" Value=asset.Id>@asset.Name</MudSelectItem>
+            }
+        </MudSelect>
+
+        <MudDatePicker Label="Start" HelperText="yyyy-MM-dd" Editable="true" @bind-Date="StartDate"
+                       Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="Start Date"
+                       FixDay="1" OpenTo="OpenTo.Month" Variant="Variant.Outlined" />
+
+        <MudDatePicker Label="Start" HelperText="yyyy-MM-dd" Editable="true" @bind-Date="EndDate"
+                       Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="End Date"
+                       FixDay="1" OpenTo="OpenTo.Month" Variant="Variant.Outlined" />
+
+    </DialogContent>
+
+    <DialogActions>
+        <div class="d-flex align-center justify-space-between">
+            <MudButton Variant="Variant.Filled" Disabled="false" Class="ml-auto" OnClick="this.CancelAsset">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="false" Class="ml-auto" OnClick="this.AddIncome">
+                Add
+            </MudButton>
+        </div>
+    </DialogActions>
+</MudDialog>    

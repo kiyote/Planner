@@ -1,5 +1,3 @@
-using System;
-
 namespace Planner.Core.LifeExpectancies;
 
 public class HardcodedLifeExpectancyProvider : ILifeExpectancyProvider {

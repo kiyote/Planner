@@ -1,7 +1,8 @@
 ﻿@page "/plans/create"
 @using MudBlazor.Extensions
-@using Planner.Core
 @using Planner.ClientApp.Pages.Plans.Components
+@using Planner.ClientApp.Pages.Plans.Models
+@using Planner.Core
 
 <PageTitle>Plans</PageTitle>
 
@@ -14,10 +15,10 @@
 <MudExpansionPanels>
     <MudExpansionPanel Text="Members" Expanded="true">
         <MudStack Row="true">
-        @if (Members.Count == 0) {
+        @if (_members.Count == 0) {
             <MudText Color="Color.Error">Please add at least one member.</MudText>
         }
-        @foreach (NewPlanMember member in Members)
+        @foreach (NewPlanMember member in _members)
         {
             <MudCard Outlined="true">
                 <MudCardContent>
@@ -44,11 +45,11 @@
 
     </MudExpansionPanel>
     <MudExpansionPanel Text="Assumptions">
-        <PlanAssumptionsComponent />
+        <PlanAssumptionsComponent @bind-InterestPercent=_defaultInterestPercent  @bind-InflationPercent=_defaultInflationPercent />
     </MudExpansionPanel>
     <MudExpansionPanel Text="Assets">
         <MudStack Row="true">
-        @foreach (NewPlanAsset asset in PlanAssets)
+        @foreach (NewPlanAsset asset in _planAssets)
         {
             <MudCard Outlined="true">
                 <MudCardContent>
@@ -59,7 +60,7 @@
                             <MudSelectItem T="AssetTaxStatus?" Value=AssetTaxStatus.Taxable>Taxable</MudSelectItem>
                             <MudSelectItem T="AssetTaxStatus?" Value=AssetTaxStatus.TaxFree>Tax Free</MudSelectItem>
                         </MudSelect>
-                        <MudTextField T="float?" Label="Interest Rate %" Required="false" @bind-Value="asset.InterestRate" />
+                        <MudTextField T="decimal?" Label="Interest Rate %" Required="false" @bind-Value="asset.InterestPercent" />
                         <MudTextField T="decimal?" Label="Amount" Required="false" @bind-Value="asset.Amount" />
                     </MudForm>
                 </MudCardContent>
@@ -75,8 +76,46 @@
         <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="this.ShowCreatePlanAssetAsync" />
 
     </MudExpansionPanel>
+    <MudExpansionPanel Text="Income">
+        <MudStack Row="true">
+            @foreach (NewPlanIncome income in _planIncomes)
+            {
+                <MudCard Outlined="true">
+                    <MudCardContent>
+                        <MudForm>
+                            <MudTextField T="string" Label="Name" Required="true" @bind-Value="income.Name"
+                                          RequiredError="A name is required!" />
+                            <MudTextField T="decimal?" Label="Amount" Required="false" @bind-Value="income.Amount" />
+                            <MudSelect T="Guid?" @bind-Value="income.TargetAssetId" Label="Target Asset">
+                                @foreach (var asset in _planAssets)
+                                {
+                                    <MudSelectItem T="Guid?" Value=asset.Id>@asset.Name</MudSelectItem>
+                                }
+                            </MudSelect>
+                            <MudDatePicker Label="Start" HelperText="yyyy-MM-dd" Editable="true" @bind-Date="income.StartDate"
+                                           Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="Start Date"
+                                           FixDay="1" OpenTo="OpenTo.Month" Variant="Variant.Outlined" />
+
+                            <MudDatePicker Label="Start" HelperText="yyyy-MM-dd" Editable="true" @bind-Date="income.EndDate"
+                                           Mask="@(new DateMask("0000-00-00"))" DateFormat="yyyy-MM-dd" Placeholder="End Date"
+                                           FixDay="1" OpenTo="OpenTo.Month" Variant="Variant.Outlined" />
+                        </MudForm>
+                    </MudCardContent>
+                    <MudCardActions>
+                        <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Delete" Color="Color.Error"
+                                   OnClick="() => this.RemoveIncome(income.Id)">
+                            Remove
+                        </MudButton>
+                    </MudCardActions>
+                </MudCard>
+            }
+        </MudStack>
+        <MudDivider DividerType="DividerType.Middle" Class="my-6" />
+        <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="this.ShowCreatePlanIncomeAsync" />
+
+    </MudExpansionPanel>
 </MudExpansionPanels>
 
-<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Check" Label="Create" Style="position:fixed; right:40px;" />
+<MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Check" Label="Create" Style="position:fixed; right:40px;" OnClick="this.CreatePlanAsync" />
 
 

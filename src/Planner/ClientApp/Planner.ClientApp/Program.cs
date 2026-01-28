@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using MudBlazor.Services;
+using Planner.ClientApp.Storage;
 using Planner.Core.LifeExpectancies;
 
 namespace Planner.ClientApp;
@@ -14,7 +15,8 @@ public class Program {
 		_ = builder.Services
 			.AddScoped( sp => new HttpClient { BaseAddress = new Uri( builder.HostEnvironment.BaseAddress ) } )
 			.AddMudServices()
-			.AddHardcodedLifeExpectancyProvider();
+			.AddHardcodedLifeExpectancyProvider()
+			.AddLocalStoragePlanStorage();
 
 		await builder.Build().RunAsync();
 	}

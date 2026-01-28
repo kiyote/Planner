@@ -3,5 +3,6 @@
 public record Member(
     Guid Id,
     string Name,
-    DateTime Birthdate
+    DateTime Birthdate,
+	int LifeExpectancyInYears
 );

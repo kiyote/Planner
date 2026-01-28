@@ -11,7 +11,7 @@
             <MudSelectItem T="AssetTaxStatus" Value=AssetTaxStatus.TaxFree>Tax Free</MudSelectItem>
         </MudSelect>
 
-        <MudTextField T="float" Label="Interest Rate %" Required="true" @bind-Value="InterestRate"
+        <MudTextField T="decimal" Label="Interest Rate %" Required="true" @bind-Value="InterestRatePercent"
             RequiredError="A percentage is required." />
 
         <MudTextField T="decimal" Label="Amount" Required="true" @bind-Value="Amount"
